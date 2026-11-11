@@ -1,0 +1,249 @@
+{
+  "info": {
+    "_postman_id": "83f0a8b0-e165-458d-bbec-1911310104a0",
+    "name": "Rest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "60115236",
+    "_collection_link": "https://go.postman.co/collection/60115236-83f0a8b0-e165-458d-bbec-1911310104a0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "hello world",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/test/hello",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "test",
+                "hello"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain;charset=UTF-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "11"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 11 Nov 2026 08:01:19 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "Hello World"
+        },
+        {
+          "name": "students",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/students",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "students"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "127"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 11 Nov 2026 08:14:58 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"firstName\": \"Ada\",\n        \"lastName\": \"Wong\"\n    },\n    {\n        \"firstName\": \"Mikasa\",\n        \"lastName\": \"Ackerman\"\n    },\n    {\n        \"firstName\": \"Rukia\",\n        \"lastName\": \"Kuchiki\"\n    }\n]"
+        },
+        {
+          "name": "students/0",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/students/0",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "students",
+                "0"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "37"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 11 Nov 2026 08:20:47 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"firstName\": \"Ada\",\n    \"lastName\": \"Wong\"\n}"
+        },
+        {
+          "name": "not found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/students/45",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "students",
+                "45"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 11 Nov 2026 08:44:02 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": 404,\n    \"message\": \"Student id45not found!\",\n    \"timeStamp\": 1794386642841\n}"
+        },
+        {
+          "name": "bad request",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/students/asdfghjk",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "students",
+                "asdfghjk"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 11 Nov 2026 08:48:25 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": 400,\n    \"message\": \"Invalid data. Only integers are accepted.\",\n    \"timeStamp\": 1794386905850\n}"
+        }
+      ]
+    }
+  ]
+}

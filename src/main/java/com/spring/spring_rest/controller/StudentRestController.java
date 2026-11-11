@@ -6,10 +6,12 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.exception.StudentNotFoundException;
 import com.spring.spring_rest.entity.Student;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -32,5 +34,15 @@ public class StudentRestController {
       return theStudents;
   }
   
-
+  @GetMapping("/students/{studentId}")
+  public Student getStudent(@PathVariable int studentId) {
+    
+    if(studentId >= theStudents.size() || (studentId < 0)) {
+      throw new StudentNotFoundException(
+        "Student id" + studentId + "not found!"
+      );
+    }
+    return theStudents.get(studentId);
+  }
+  
 }
