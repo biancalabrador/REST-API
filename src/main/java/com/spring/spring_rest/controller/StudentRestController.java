@@ -1,48 +1,32 @@
 package com.spring.spring_rest.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.spring_rest.entity.Student;
-import com.spring.spring_rest.exception.StudentNotFoundException;
+import com.spring.spring_rest.dto.StudentDto;
+import com.spring.spring_rest.service.StudentService;
 
-import jakarta.annotation.PostConstruct;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController 
-@RequestMapping("/api")
+@RequestMapping("/api/student")
 public class StudentRestController {
   
-  private List<Student> theStudents;
+  private StudentService studentService;
 
-  // @PostConstruct 
-  // public void initialize() {
-  //   theStudents = new ArrayList<>();
-  //   theStudents.add(new Student("Ada", "Wong"));
-  //   theStudents.add(new Student("Mikasa", "Ackerman"));
-  //   theStudents.add(new Student("Rukia", "Kuchiki"));
-  // }
+  public StudentRestController(StudentService studentService) {
+    this.studentService = studentService;
+  }
 
-  @GetMapping("/students")
-  public List<Student> getStudents() {
-      return theStudents;
+  @PostMapping 
+  public ResponseEntity<StudentDto> createStudent(@RequestBody StudentDto theStudentDto) {
+    StudentDto saved = studentService.createStudent(theStudentDto);
+    return new ResponseEntity<>(saved, HttpStatus.CREATED);
   }
-  
-  @GetMapping("/students/{studentId}")
-  public Student getStudent(@PathVariable int studentId) {
-    
-    if(studentId >= theStudents.size() || (studentId < 0)) {
-      throw new StudentNotFoundException(
-        "Student id" + studentId + "not found!"
-      );
-    }
-    return theStudents.get(studentId);
-  }
+
   
 }
