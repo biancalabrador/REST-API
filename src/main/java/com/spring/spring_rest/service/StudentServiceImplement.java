@@ -12,6 +12,8 @@ import com.spring.spring_rest.exception.StudentNotFoundException;
 import com.spring.spring_rest.mapper.StudentMapper;
 import com.spring.spring_rest.repository.StudentRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service 
 public class StudentServiceImplement implements StudentService{
   
@@ -87,6 +89,7 @@ public class StudentServiceImplement implements StudentService{
   }
 
   @Override 
+  @Transactional 
   public void deleteStudentById(Long theId) {
     studentRepo.findById(theId)
       .orElseThrow(() -> new StudentNotFoundException("Student id" + theId + " not found!")
