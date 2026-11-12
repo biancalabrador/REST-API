@@ -86,4 +86,12 @@ public class StudentServiceImplement implements StudentService{
     return StudentMapper.mapToStudentDto(saved);
   }
 
+  @Override 
+  public void deleteStudentById(Long theId) {
+    studentRepo.findById(theId)
+      .orElseThrow(() -> new StudentNotFoundException("Student id" + theId + " not found!")
+    );
+    studentRepo.deleteById(theId);
+  }
+
 }
