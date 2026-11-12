@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -45,6 +46,12 @@ public class StudentRestController {
   public ResponseEntity<List<StudentDto>> getAllStudents() {
     List<StudentDto> students = studentService.getAllStudents();
     return ResponseEntity.ok(students);
+  }
+
+  @PutMapping("{id}")
+  public ResponseEntity<StudentDto> updateStudent(@PathVariable Long id, @Valid @RequestBody StudentDto thStudentDto) {
+    StudentDto studentDto = studentService.updateStudent(id, thStudentDto);
+    return ResponseEntity.ok(studentDto);
   }
 
 }

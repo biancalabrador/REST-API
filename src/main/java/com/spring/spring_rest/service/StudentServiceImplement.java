@@ -44,4 +44,26 @@ public class StudentServiceImplement implements StudentService{
       .collect(Collectors.toList());
   }
 
+  @Override 
+  public StudentDto updateStudent (Long theId, StudentDto theStudentDto) {
+    Student student = studentRepo.findById(theId)
+      .orElseThrow(() -> new StudentNotFoundException("Student id" + theId + " not found!")
+    );
+
+    student.setFirstName(theStudentDto.getFirstName());
+    student.setLastName(theStudentDto.getLastName());
+    student.setEmail(theStudentDto.getEmail());
+
+    Student saved = studentRepo.save(student);
+    return StudentMapper.mapToStudentDto(saved);
+  }
+
+  public StudentRepository getStudentRepo() {
+    return studentRepo;
+  }
+
+  public void setStudentRepo(StudentRepository studentRepo) {
+    this.studentRepo = studentRepo;
+  }
+
 }
