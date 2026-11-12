@@ -9,5 +9,5 @@ public interface StudentService {
   StudentDto getStudentById(Long theId);
   List<StudentDto> getAllStudents();
   StudentDto updateStudent(Long theId, StudentDto theStudentDto);
-  StudentDto patchStudent(Long theId, StudentDto theStudentDto0);
+  StudentDto patchStudent(Long theId, StudentDto theStudentDto);
 }
